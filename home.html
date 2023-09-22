@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <style>
+        body{
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+
+<script>
+    function includeHTML(url, id) {
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", url);
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          var content = xhr.responseText;
+          var element = document.createElement("div");
+          element.id = id;
+          element.innerHTML = content;
+          document.body.appendChild(element);
+        }
+      };
+      xhr.send();
+    }
+  </script>
+  <script>
+    includeHTML("HTML files/navbar.html", "nabvar");
+    includeHTML("HTML files/menubar.html","menubar")
+  </script>
+</head>
+<body>
+    <div id="navbar"></div>
+    <div id="menubar"></div>
+    <!-- DATA TO BE PULLED FROM BACKEND -->
+    <p>DATA TO BE PULLED FROM BACKEND</p>
+</body>
+
+</html>
