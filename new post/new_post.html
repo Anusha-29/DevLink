@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>New Post</title>
+    <link rel="stylesheet" href="new_post.css">
+    <script>
+        function includeHTML(url, id) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", url);
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    var content = xhr.responseText;
+                    var element = document.createElement("div");
+                    element.id = id;
+                    element.innerHTML = content;
+                    document.body.appendChild(element);
+                }
+            };
+            xhr.send();
+        }
+    </script>
+    <script>
+        includeHTML("/HTML files/navbar.html", "nabvar");
+        includeHTML("/HTML files/menubar.html", "menubar")
+    </script>
+</head>
+
+<body>
+    <div id="navbar"></div>
+    <div id="menubar"></div>
+    <!-- <h1>File Upload</h1> -->
+    <form id="uploadForm" enctype="multipart/form-data">
+        <div id="selectImageOrVideo">
+            <label for="file">Click Here to Post</label>
+        </div>
+        <input type="file" id="file" accept="image/*,video/*" required>
+        <div class="error" id="error"></div>
+        <div class="priviewDivision">
+            <img id="preview" src="#" alt="File Preview" style="display:none;">
+        </div>
+        <div class="priviewDivision">
+            <video id="videoPreview" controls style="display:none;"></video>
+        </div>
+
+        <button type="submit" id="post">Post</button>
+
+    </form>
+
+    <script>
+        document.getElementById('file').addEventListener('change', function () {
+            const preview = document.getElementById('preview');
+            const videoPreview = document.getElementById('videoPreview');
+            const file = this.files[0];
+            const errorElement = document.getElementById('error');
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    if (file.type.startsWith('image')) {
+                        preview.src = e.target.result;
+                        preview.style.display = 'block';
+                        videoPreview.style.display = 'none';
+                    } else if (file.type.startsWith('video')) {
+                        videoPreview.src = e.target.result;
+                        videoPreview.style.display = 'block';
+                        preview.style.display = 'none';
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+
+            // Add any additional validation logic here
+
+            errorElement.textContent = '';
+        });
+
+        document.getElementById('uploadForm').addEventListener('submit', function (e) {
+            const file = document.getElementById('file').files[0];
+            const errorElement = document.getElementById('error');
+
+            if (!file) {
+                errorElement.textContent = 'Please select a file.';
+                e.preventDefault();
+                return;
+            }
+
+            // You can add more validation logic here if needed
+
+            errorElement.textContent = '';
+        });
+    </script>
+</body>
+
+</html>
