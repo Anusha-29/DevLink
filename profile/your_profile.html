@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Profile</title>
+    <script>
+        function includeHTML(url, id) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", url);
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    var content = xhr.responseText;
+                    var element = document.createElement("div");
+                    element.id = id;
+                    element.innerHTML = content;
+                    document.body.appendChild(element);
+                }
+            };
+            xhr.send();
+        }
+    </script>
+    <script>
+        includeHTML("/HTML files/navbar.html", "nabvar");
+        includeHTML("/HTML files/menubar.html", "menubar")
+    </script>
+    <style>
+        /* Basic styling for the profile page */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .profile {
+            text-align: center;
+            padding: 20px;
+        }
+        .profile img {
+            max-width: 200px;
+            max-height: 200px;
+            /* border-radius: 50 %; */
+        }
+        .projects {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .project-item {
+            display: inline-block;
+            margin: 10px;
+        }
+        .project-item img {
+            max-width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar"></div>
+    <div id="menubar"></div>
+    <div class="profile">
+        <!-- User's profile image and username -->
+        <img src="IMG_20230910_144406586.jpg" alt="Your Profile Image">
+        <h2>Your Username</h2>
+    </div>
+    
+    <div class="projects">
+        <h2>Your Projects</h2>
+        <!-- Display user's uploaded images and videos -->
+        <div class="project-item">
+            <img src="project1.jpg" alt="Project 1">
+            <p>Project 1</p>
+        </div>
+        <div class="project-item">
+            <img src="project2.jpg" alt="Project 2">
+            <p>Project 2</p>
+        </div>
+        <!-- Add more project items as needed -->
+    </div>
+</body>
+</html>

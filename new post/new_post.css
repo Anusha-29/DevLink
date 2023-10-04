@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap');
+
+/* Center the entire webpage */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Style the form container */
+/* h1 {
+    text-align: center;
+    font-size: 24px;
+} */
+
+#selectImageOrVideo{
+    font-family: Montserrat;
+    margin-left: 20px;
+    display:block;
+}
+form {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* max-height: 100px; */
+}
+
+/* Style the file input and upload button */
+input[type="file"] {
+    display: none;
+}
+
+label[for="fileInput"] {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+label[for="fileInput"]:hover {
+    background-color: #2980b9;
+}
+
+input[type="submit"] {
+    background-color: #2ecc71;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* input[type="submit"]:hover {
+    background-color: #27ae60;
+} */
+
+/* Style the error message */
+#errorMessage {
+    color: red;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.priviewDivision{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 17px;
+}
+
+#post {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ffffff; /* Change this to your desired background color */
+    color: #2c2c2c; /*Text color */
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Montserrat;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#post:hover {
+    font-size: 20px ; /* Change this to the hover color */
+    transition: all;
+    transition-duration: 200ms;
+}
